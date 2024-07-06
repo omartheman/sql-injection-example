@@ -15,9 +15,15 @@
     </form>
     <script>
         const formElement= document.getElementById("myform");
-            formElement.addEventListener('submit',(e)=>{
+        const formElementVal= document.querySelector("input").value;
+        formElement.addEventListener('submit',(e)=>{
             e.preventDefault();
             const formData = new FormData(formElement);
+            formData.append("name", formElementVal);
+            formData.append("x", 'x');
+            console.log('formElementVal:', formElementVal)
+            console.log('formData:', formData)
+            console.log('formElement:', formElement)
             fetch(`http://localhost:3000`, {
                 method: 'POST',
                 body: formData,
